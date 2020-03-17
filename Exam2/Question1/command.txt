@@ -1,0 +1,5 @@
+Question 1:
+mkdir /tmp/liuz6/
+cp FlumeInterceptor-1.0-SNAPSHOT.jar /tmp/liuz6/
+source bashrc
+flume-ng agent --conf-file liuz6agentinterceptor.conf --conf /tmp/liuz6/FlumeClass-0.0.1-SNAPSHOT.jar --name a1 

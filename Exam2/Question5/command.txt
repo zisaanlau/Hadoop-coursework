@@ -1,0 +1,21 @@
+Question 1:
+mkdir /tmp/liuz6/
+cp FlumeInterceptor-1.0-SNAPSHOT.jar /tmp/liuz6/
+source bashrc
+flume-ng agent --conf-file liuz6agentinterceptor.conf --conf /tmp/liuz6/FlumeClass-0.0.1-SNAPSHOT.jar --name a1 
+
+Question 2:
+hdfs dfs -put liuz6UDF.jar /tmp/Exams
+pig -x mapreduce -param gradeInput=/tmp/Exams/grades.txt -param courseInput=/tmp/Exams/courses.txt -param pigOutput=/tmp/pigOutput -param username=liuz6 exam.pig
+
+Question 3:
+beeline -u jdbc:hive2://10.128.0.2:10000 -n hive -p password --hivevar databaseName=exam --hivevar tempTableName=tempTable --hivevar tableName=examData -f hiveCreate.hql
+beeline -u jdbc:hive2://10.128.0.2:10000 -n hive -p password --hivevar databaseName=exam --hivevar tempTableName=tempTable --hivevar tableName=examData -f hiveInsert.hql
+
+Question 4:
+use exam;
+
+select * from (select cno as cno, COUNT(cno) as count from examData where grade != 'D' GROUP BY cno) temp where temp.count >=2;
+
+Question 5:
+sudo -u hive sqoop export --connect jdbc:mysql://10.128.0.2:3306/exam --username root --hcatalog-database exam --hcatalog-table exam --hcatalog-partition-keys userName --hcatalog-partition-values liuz6 --table examData

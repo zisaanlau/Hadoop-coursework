@@ -1,0 +1,8 @@
+mv customInterceptor.jar ~/apache-flume-1.9.0-bin/lib/
+
+source bashrc
+flume-ng agent -conf-file /home/zisaanlau/Hadoop/Task4/task4.conf --name a1
+
+//hadoop fs -ls /tmp/flume/log/hadoop-m1/19-05-07
+
+jar needs to be placed in lib dir.

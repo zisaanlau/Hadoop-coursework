@@ -1,0 +1,10 @@
+Question 1:
+mkdir /tmp/liuz6/
+cp FlumeInterceptor-1.0-SNAPSHOT.jar /tmp/liuz6/
+source bashrc
+flume-ng agent --conf-file liuz6agentinterceptor.conf --conf /tmp/liuz6/FlumeClass-0.0.1-SNAPSHOT.jar --name a1 
+
+Question 2:
+hdfs dfs -put liuz6UDF.jar /tmp/Exams
+pig -x mapreduce -param gradeInput=/tmp/Exams/grades.txt -param courseInput=/tmp/Exams/courses.txt -param pigOutput=/tmp/pigOutput -param username=liuz6 exam.pig
+
